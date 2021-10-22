@@ -1,0 +1,25 @@
+# Created at 2021-10-18T20:43:17.852
+TestSet has not finished before stream error has appeared >> initializing exit by non-null configuration: null
+java.io.EOFException
+	at java.base/java.io.DataInputStream.readInt(DataInputStream.java:398)
+	at org.apache.maven.surefire.booter.MasterProcessCommand.decode(MasterProcessCommand.java:115)
+	at org.apache.maven.surefire.booter.CommandReader$CommandRunnable.run(CommandReader.java:391)
+	at java.base/java.lang.Thread.run(Thread.java:831)
+
+
+# Created at 2021-10-18T20:43:18.198
+Unexpected IOException with stream: 2021-10-18 20:43:18.197  WARN 7590 --- [           main] o.s.w.c.s.GenericWebApplicationContext   : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'destinoRestController': Unsatisfied dependency expressed through field 'destinoMapper'; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'co.edu.usbcali.viajesusb.mapper.DestinoMapper' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+
+
+# Created at 2021-10-18T20:43:18.200
+Unexpected IOException with stream: 2021-10-18 20:43:18.199  INFO 7590 --- [           main] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+
+
+# Created at 2021-10-18T20:43:18.201
+Unexpected IOException with stream: 2021-10-18 20:43:18.200  INFO 7590 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Shutdown initiated...
+
+
+# Created at 2021-10-18T20:43:18.211
+Unexpected IOException with stream: 2021-10-18 20:43:18.210  INFO 7590 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Shutdown completed.
+
+
