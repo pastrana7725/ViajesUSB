@@ -41,7 +41,7 @@ import co.edu.usbcali.viajesusb.service.ClienteService;
  */
 @RestController
 @RequestMapping("/api/cliente")
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin()
 public class ClienteRestController {
 	
 	@Autowired
