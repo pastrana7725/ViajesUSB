@@ -42,8 +42,8 @@ public class DestinoDTO implements Serializable{
 	private String estado;
 	
 	private Long idTide;
-	private String codigoTipoDestino="";
-	private String nombreTipoDestino="";
+	private String codigoTipoDestino;
+	private String nombreTipoDestino;
 	
 	
 }
