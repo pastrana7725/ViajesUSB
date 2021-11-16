@@ -25,11 +25,13 @@ public interface DestinoService  {
 
 	public List<Destino> findByTipoDestino_Codigo(String codigoTipoDestino) throws Exception;
 	
-	public Page<Destino> findByEstado(String estado, Pageable page) throws Exception;
+	public List<Destino> findByEstado(String estado) throws Exception;
 	
 	public Destino guardarDestino(DestinoDTO destinoDTO) throws Exception;
 	
 	public Destino actualizarDestino(DestinoDTO destinoDTO) throws Exception;
 	
 	public void eliminarDestino(Long idDestino) throws Exception;
+	
+	public Destino findByCodigo(String codigo) throws Exception;
 }

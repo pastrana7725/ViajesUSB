@@ -65,27 +65,6 @@ class DestinoTest {
 		}
 	}
 	
-	@Test
-	@Transactional
-	void debeConsutarDestinosPorEstadoPaginado() {
-		
-		Page<Destino> pageDestino=null;
-		
-		try {
-			//El primer numero es el numero de la pagina actual empezando desde 0
-			//El segundo numero es la cantidad de item por pagina
-			
-			Pageable pageable = PageRequest.of(0,3);
-			pageDestino= destinoService.findByEstado("A", pageable);
-			
-			for(Destino destino : pageDestino.getContent()) {
-				System.out.println(destino.getCodigo()+" - "+destino.getNombre());
-			}
-		}
-		catch(Exception e) {
-			e.printStackTrace();
-		}
-	}
 	
 	
 	@Test

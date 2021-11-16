@@ -49,6 +49,28 @@ public class DestinoServiceImpl implements DestinoService{
 	 */
 	
 	@Override
+	public Destino findByCodigo(String codigo) throws Exception {
+		
+		Destino destino=null;
+		
+		//NO PUEDE INGRESAR VALORES VACIOS
+		if(codigo == null || Utilities.isEmpty(codigo)) {
+			throw new Exception("El codigo es obligatorio");
+		}
+		//EL CODIGO DE TIPO DESTINO DEBE TENER MAXIMO 5 CARACTERES
+		if(Utilities.isLongerThan(codigo, 5)) {
+			throw new Exception("El tipo destino solo puede contener 5 caracteres");
+		}
+		//SOLAMENTE ACEPTA LETRAS
+		if(!Utilities.isOnlyLetters(codigo)){
+			throw new Exception("El codigo solo puede contener letras ");
+		}
+		
+		destino=destinoRepository.findByCodigo(codigo);
+		return destino;	
+	}
+	
+	@Override
 	public List<Destino> findByTipoDestino_Codigo(String codigoTipoDestino) throws Exception {
 		
 		List<Destino> lstDestino=null;
@@ -81,7 +103,7 @@ public class DestinoServiceImpl implements DestinoService{
 	 */
 	
 	@Override
-	public Page<Destino> findByEstado(String estado, Pageable pageable) throws Exception {
+	public List<Destino> findByEstado(String estado) throws Exception {
 		//NO PUEDE INGRESAR UN ESTADO VACIO
 		if(estado == null || Utilities.isEmpty(estado)) {
 			throw new Exception("El estado es obligatorio");
@@ -90,17 +112,12 @@ public class DestinoServiceImpl implements DestinoService{
 		if(Utilities.isLongerThan(estado, 1)) {
 			throw new Exception("El estado solo puede contener 1 caracter");
 		}
-		//NO PUEDE INGRESAR UN PAGEABLE VACIO
-		if(pageable == null) {
-			throw new Exception("El Pageable no puede ser nulo");
-		}
-		
 		//EL ESTADO SOLAMENTE ACEPTA LETRAS
 		if(!Utilities.isOnlyLetters(estado)){
 			throw new Exception("El estado solo puede contener letras ");
 		}
 		
-		Page<Destino> pageDestino= destinoRepository.findByEstado(estado, pageable);
+		List<Destino> pageDestino= destinoRepository.findByEstado(estado);
 		return pageDestino;
 	}
 

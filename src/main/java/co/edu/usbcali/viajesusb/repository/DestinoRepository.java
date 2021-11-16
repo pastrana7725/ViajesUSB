@@ -30,6 +30,9 @@ public interface DestinoRepository extends JpaRepository <Destino, Long> {
 	 * @throws
 	 */
 	
+	public Destino findByCodigo(String codigo) throws Exception;
+	
+	
 	public List<Destino> findByTipoDestino_Codigo(String codigoTipoDestino) throws SQLException;
 	
 
@@ -44,7 +47,7 @@ public interface DestinoRepository extends JpaRepository <Destino, Long> {
 	 * @return: Page<Destino>      
 	 * @throws
 	 */
-	public Page<Destino> findByEstado(String estado, Pageable pageable) throws SQLException;
+	public List<Destino> findByEstado(String estado) throws SQLException;
 	
 	
 	

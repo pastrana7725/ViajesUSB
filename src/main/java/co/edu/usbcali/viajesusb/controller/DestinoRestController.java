@@ -15,6 +15,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -39,6 +40,7 @@ import co.edu.usbcali.viajesusb.service.DestinoService;
  */
 @RestController
 @RequestMapping("/api/destino")
+@CrossOrigin(origins = "http://localhost:4200")
 public class DestinoRestController {
 
 	@Autowired
@@ -79,12 +81,14 @@ public class DestinoRestController {
 	}
 	
 	
-	@DeleteMapping("/eliminarDestino/{id}")
-	public ResponseEntity<?> eliminarDestino(@PathVariable("id")Long id){
+	@DeleteMapping("/eliminarDestino/{codigo}")
+	public ResponseEntity<?> eliminarDestino(@PathVariable("codigo")String codigo){
 		
 		try {
 			
-			destinoService.eliminarDestino(id);
+			Destino destino= destinoService.findByCodigo(codigo);
+			
+			destinoService.eliminarDestino(destino.getIdDest());
 			
 			return ResponseEntity.ok("Se eliminó satisfcatoriamente");
 			
@@ -108,21 +112,21 @@ public class DestinoRestController {
 		}
 		
 	}
-	/*
+	
 	@GetMapping("/findDestinoPorEstado")
-	public ResponseEntity<?> findByEstado(@RequestParam("estado") String estado, @RequestParam("pageable") Pageable page ){
+	public ResponseEntity<?> findByEstado(@RequestParam("estado") String estado){
 		
 		try {
 			
-			Page<Destino> lstDestinos=destinoService.findByEstado(estado, page);
-			return ResponseEntity.ok().body(destinoMapper.PageDestinoToPageDestinoDTO(lstDestinos));
+			List<Destino> lstDestinos=destinoService.findByEstado(estado);
+			return ResponseEntity.ok().body(destinoMapper.ListDestinoToListDestinoDTO(lstDestinos));
 			
 		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
 		}
 		
 	}
-	*/
+	
 	
 	
 	
